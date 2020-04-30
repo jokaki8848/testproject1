@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>add</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/signin.css" th:href="@{/webjars/bootstrap/4.0.0/css/signin.css}" rel="stylesheet">
+</head>
+<body>
+<div>
+    <form th:action="@{/book}" method="post">
+        <input type="hidden" value="put" name="_method" th:if="${book!=null}"/>
+        <input type="hidden" th:value="${book.id}" name="id" th:if="${book!=null}"/>
+        <div class="form-group">
+            <label>书名</label>
+            <input class="form-control" name="name" type="text" placeholder="hehe"
+                   th:value="${book!=null}?${book.name}">
+        </div>
+        <div class="form-group">
+            <label>作者</label>
+            <input class="form-control" name="author" type="text" placeholder="张三"
+                   th:value="${book!=null}?${book.author}">
+        </div>
+        <div class="form-group">
+            <label>价格</label>
+            <input class="form-control" name="price" type="text" placeholder="100"
+                   th:value="${book!=null}?${book.price}">
+        </div>
+        <button type="submit" class="btn btn-primary" th:text="${book==null}?'添加':'修改'"></button>
+    </form>
+</div>
+</body>
+</html>
